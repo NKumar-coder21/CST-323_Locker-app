@@ -79,7 +79,8 @@
                             <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
                         </ul>
                         <p class="copyright">ULock Software &amp; Components LLC © 2021</p>
-                        <a class="btn btn-sm btn-outline-light" href="lockers/admin.php" role="button">ULock Software
+                        <a class="btn btn-sm btn-outline-light" href="admin-lock/adminlogin.php" role="button">ULock
+                            Software
                             &amp;
                             Components
                             LLC © 2021</a>
