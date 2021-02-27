@@ -1,0 +1,81 @@
+body{
+    margin: 0;
+    padding: 0 ;
+    font-family: 'Times New Roman', Times, serif;
+    background: #031D44; 
+}
+.box, .registerbox, .adminbox{
+    width: 800px;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: #191919;
+    text-align: center;
+}
+
+.box input[type = "text"],.registerbox input[type = "tel"],.box input[type = "password"],
+.registerbox input[type = "text"],.registerbox input[type = "password"]{
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #002358;
+    padding: 14px 10px;
+    width: 400px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition:0.25s;
+    font-size: x-large;
+}
+.box input[type = "text"]:focus,.registerbox input[type = "tel"]:focus,.box input[type = "password"]:focus,
+.registerbox input[type = "text"]:focus,.registerbox input[type = "password"]:focus{
+    width: 475px;
+    border-color: #00e1ff;
+}
+.box input[type = "submit"],
+.adminbox input[type = "submit"],
+.registerbox input[type = "submit"]{
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #008035;;
+    padding: 14px 40px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition:0.25s;
+    cursor: pointer;
+    font-size: x-large;
+}
+.box input[type = "submit"]:hover,
+.adminbox input[type = "submit"]:hover,
+.registerbox input[type = "submit"]:hover{
+    background: #008035;
+}
+
+.box .message, .registerbox .message{
+    color: white;
+}
+.box .message a, .registerbox .message a{
+    color: #189df5;
+}
+.adminbox input[type = "password"]{
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    padding: 14px 10px;
+    width: 500px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition:0.25s;
+    font-size:90px;
+}
