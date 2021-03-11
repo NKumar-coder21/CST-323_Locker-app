@@ -4,13 +4,13 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title> Lock N' Go | Admin</title>
+        <title> Lock N' Go | Login</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="../styles/logstyle.css" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
     </head>
 
-    <body onload='setFocusToTextBox()' style="background-color: #031D44">
+    <body style="background-color: #031D44">
         <?php
     if (isset($_GET['err'])) {
         if (($_GET['err']) == "null") {
@@ -34,30 +34,38 @@
                 No username exist! Create a new user? <a href="signup.php">Sign Up</a>
                 </div>';
         }
+    } else if (isset($_GET['success'])) {
+        if (($_GET['success']) == "login") {
+            echo '
+                <div class="alert alert-success" role="alert">
+                Your account has been successfuly created! Login to get started!
+                </div>';
+        }
     }
     ?>
-        <form class="container box" action="../controllers/mangement/managelockers.php" method="post">
+        <form class="container box" action="../controllers/login.con.php" method="post">
             <a class="navbar-brand text-white" href="../index.php">
                 <h1>Lock N' Go</h1>
-                <h6><i>Admin Locker Management</i></h6>
             </a>
             <div class="row justify-content-center">
-                <div class="col-3"></div>
-                <div class="col-6">
+                <div class="col-1"></div>
+                <div class="col-10">
                     <div class="form-floating mb-3">
-                        <input class="form-control" id="floatingInput" type="password" name="PasswordPin">
-                        <label for="floatingInput">PIN</label>
+                        <input type="email" class="form-control" id="floatingInput" name="mail" required>
+                        <label for="floatingInput">Email</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" id="floatingInput" name="passkey" required>
+                        <label for="floatingInput">Combination Pin</label>
                     </div>
                 </div>
-                <div class="col-3"></div>
+                <div class="col-1"></div>
             </div>
-            <input class="btn btn-outline-success btn-lg mb-3" type="submit" name="submit" value="Go">
+            <input class="btn btn-outline-success btn-lg mb-3" type="submit" name="login_submit" value="Open Locker">
+            <p class="message">Don't Have a Locker Yet? <a href="signup.php">Create an Account</a>
+            <p>
         </form>
+        </div>
     </body>
-    <script>
-    function setFocusToTextBox() {
-        document.getElementsByName("PasswordPin").focus();
-    }
-    </script>
 
 </html>
