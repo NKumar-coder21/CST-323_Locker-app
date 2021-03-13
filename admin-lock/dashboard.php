@@ -65,22 +65,21 @@ if (isset($_SESSION["sessionID"])) {
             ?>
         <section role="main" class="container-fluid bg-secondary">
             <div class="container mb-5 text-center text-white">
-                <form>
+                <form action="../controllers/mangement/newlocker.php" method="post">
                     <h2> Add a New Locker</h2>
                     <div class="form-group text-nowrap d-inline-block" style="margin: 0px 10px;"><label
                             class="d-inline">Locker Label:&nbsp;</label><input class="form-control d-inline"
-                            id="labelName" type="text" style="width: 150px;" required></div>
+                            name="labelName" type="text" style="width: 150px;" required></div>
                     <div class="form-group text-nowrap d-inline-block" style="margin: 0px 10px;"><label
                             class="d-inline-block">Size:&nbsp;</label><select class="form-control d-inline"
-                            id="selection" style="width: 150px;margin-top: 1px;">
+                            name="selection" style="width: 150px;margin-top: 1px;">
                             <option value="1">Small</option>
                             <option value="2">Medium</option>
                             <option value="3">Large</option>
                             <option value="4">X-Large</option>
                         </select></div>
-                    <a class="btn btn-sm btn-info" id="add_locker" href="../controllers/mangement/newlocker.php"
-                        role="button">Add New
-                        Locker</a>
+                    <input class="btn btn-outline-success btn-lg mb-3" type="submit" name="add_locker"
+                        value="Create Locker">
                 </form>
             </div>
             <div class="container-fluid">
