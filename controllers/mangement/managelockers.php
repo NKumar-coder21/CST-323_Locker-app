@@ -1,4 +1,6 @@
 <?php
+//  <!--Created by Nathaniel Kumar @ GCU 2021 -->
+// login the admin user
 if (isset($_POST['submit'])) {
     require "../DBConn.con.php";
 

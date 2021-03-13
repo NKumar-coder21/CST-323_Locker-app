@@ -1,5 +1,7 @@
+<!--Created by Nathaniel Kumar @ GCU 2021 -->
 <?php
 session_start();
+//check if the user is logged in, if not go back to login screen
 if (isset($_SESSION["sessionID"])) {
     require "../controllers/DBConn.con.php"; ?>
 <!DOCTYPE html>

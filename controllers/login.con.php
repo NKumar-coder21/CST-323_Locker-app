@@ -1,4 +1,6 @@
 <?php
+//   <!--Created by Nathaniel Kumar @ GCU 2021 -->
+//login the user
 if (isset($_POST['login_submit'])) {
     require "DBConn.con.php";
 

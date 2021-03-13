@@ -1,4 +1,6 @@
 <?php
+//   <!--Created by Nathaniel Kumar @ GCU 2021 -->
+// this allows to remove a user from the locker in the main app
 require "../DBConn.con.php";
 session_start();
 if (isset($_SESSION["sessionID"])) {

@@ -1,3 +1,4 @@
+<!--Created by Nathaniel Kumar @ GCU 2021 -->
 <?php
 session_start();
 if (isset($_SESSION["sessionID"])) {
@@ -78,8 +79,7 @@ if (isset($_SESSION["sessionID"])) {
                             <option value="3">Large</option>
                             <option value="4">X-Large</option>
                         </select></div>
-                    <input class="btn btn-outline-success btn-lg mb-3" type="submit" name="add_locker"
-                        value="Create Locker">
+                    <input class="btn btn-info btn-sm mb-3" type="submit" name="add_locker" value="Create Locker">
                 </form>
             </div>
             <div class="container-fluid">

@@ -1,4 +1,6 @@
 <?php
+//   <!--Created by Nathaniel Kumar @ GCU 2021 -->
+// delete a locker from database
 require "../DBConn.con.php";
 session_start();
 if (isset($_SESSION["sessionID"])) {

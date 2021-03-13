@@ -1,4 +1,6 @@
 <?php
+//  <!--Created by Nathaniel Kumar @ GCU 2021 -->
+//takes the user's info to create a user to the database
 if (isset($_POST['register_visitor'])) {
     require "DBConn.con.php";
 

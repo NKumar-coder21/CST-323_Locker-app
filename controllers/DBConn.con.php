@@ -1,4 +1,6 @@
 <?php
+//  <!--Created by Nathaniel Kumar @ GCU 2021 -->
+//connect to the database
 $servername = "localhost";
 $DBuser = "root";
 $DBpass = "root";
