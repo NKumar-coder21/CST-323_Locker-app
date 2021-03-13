@@ -18,6 +18,13 @@ if (isset($_SESSION["sessionID"])) {
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
         </script>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.js"
+            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js">
+        </script>
+
     </head>
 
     <body>
@@ -28,10 +35,9 @@ if (isset($_SESSION["sessionID"])) {
                     aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div class="collapse navbar-collapse justify-content-md-center">
-                    <a class="navbar-brand" href="#">Lock & Go | Admin Dashboard</a>
-                    <ul class="navbar-nav">
+                    <a class="navbar-brand" href="dashboard.php">Lock & Go | Admin Dashboard</a>
+                    <ul class="ms-auto navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link text-white" href="#">Welcome,
                                 <?php echo $_SESSION["sessionName"] ?></a>
@@ -43,7 +49,40 @@ if (isset($_SESSION["sessionID"])) {
                 </div>
             </div>
         </nav>
-        <section role="main" class="container-fluid">
+        <?php if (isset($_GET['success'])) {
+                if (($_GET['success']) == "delete") {
+                    echo '
+            <div class="alert alert-success" role="alert">
+                Locker has been deleted!
+            </div>';
+                } else if (($_GET['success']) == "create") {
+                    echo '
+            <div class="alert alert-success" role="alert">
+                Locker has been created!
+            </div>';
+                }
+            }
+            ?>
+        <section role="main" class="container-fluid bg-secondary">
+            <div class="container mb-5 text-center text-white">
+                <form>
+                    <h2> Add a New Locker</h2>
+                    <div class="form-group text-nowrap d-inline-block" style="margin: 0px 10px;"><label
+                            class="d-inline">Locker Label:&nbsp;</label><input class="form-control d-inline"
+                            id="labelName" type="text" style="width: 150px;" required></div>
+                    <div class="form-group text-nowrap d-inline-block" style="margin: 0px 10px;"><label
+                            class="d-inline-block">Size:&nbsp;</label><select class="form-control d-inline"
+                            id="selection" style="width: 150px;margin-top: 1px;">
+                            <option value="1">Small</option>
+                            <option value="2">Medium</option>
+                            <option value="3">Large</option>
+                            <option value="4">X-Large</option>
+                        </select></div>
+                    <a class="btn btn-sm btn-info" id="add_locker" href="../controllers/mangement/newlocker.php"
+                        role="button">Add New
+                        Locker</a>
+                </form>
+            </div>
             <div class="container-fluid">
                 <!--Main content-->
                 <div class="col-md-12">
@@ -60,9 +99,8 @@ if (isset($_SESSION["sessionID"])) {
                                             <th scope="col">Size</th>
                                             <th scope="col">Vacant</th>
                                             <th scope="col">User</th>
-                                            <th scope="col">User's Email</th>
+                                            <th scope="col">User' s Email</th>
                                             <th scope="col">User's Phone #</th>
-                                            <th scope="col">Edit</th>
                                             <th scope="col">Delete</th>
                                         </tr>
                                     </thead>
@@ -86,11 +124,10 @@ if (isset($_SESSION["sessionID"])) {
                                             <td><?php echo $items['Mail'] ?></td>
                                             <td><?php echo $items['Phone'] ?></td>
                                             <?php if ($items['Status'] == "Available") {
-                                                                echo '<td><a class="btn fs-5 btn-success" href="#" role="button">Edit</a></td>';
-                                                                echo '<td><a class="btn fs-5 btn-danger" href="#" role="button">Delete</a></td>';
+                                                                echo '<td><a class="btn fs-6 btn-danger" href="../controllers/mangement/deleteLocker.php?locker=' . $items["Label"] . '" role="button">Delete</a></td>';
                                                             } else {
-                                                                echo '<td colspan="2" ><a class="btn fs-5 btn-warning disabled" href="#"
-                                                        role="button"><small>User Owns - Cannot Modify</small></a></td>';
+                                                                echo '<td><a class="btn fs-6 btn-secondary disabled" href="#"
+                                                        role="button"><small>User Owns - Cannot Delete</small></a></td>';
                                                             }
                                                             ?>
                                         </tr>
@@ -106,8 +143,39 @@ if (isset($_SESSION["sessionID"])) {
                     </div>
                 </div>
             </div>
+            <br>
+            <br>
         </section>
     </body>
+    <script>
+    $(document).ready(function() {
+        $('#allLockers').DataTable({
+            "pagingType": "numbers",
+            columns: [null, null, null, null, null, null, {
+                orderable: false
+            }],
+            order: [
+                [1, 'asc']
+            ],
+            "columnDefs": [{
+                    "targets": [2],
+                    "searchable": false
+                },
+                {
+                    "targets": [6],
+                    "searchable": false
+                }
+            ],
+            "language": {
+                "lengthMenu": "Display _MENU_ records per page",
+                "zeroRecords": "No records match your search term",
+                "info": "Page _PAGE_ of _PAGES_",
+                "infoEmpty": "No records available",
+                "infoFiltered": "(filtered from _MAX_ total records)"
+            }
+        });
+    });
+    </script>
 
 </html>
 <?php
